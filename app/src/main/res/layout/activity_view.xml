@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/bar_background">
+
+        <Button
+                android:id="@+id/view_back_button"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:text="BACK"
+                android:layout_centerVertical="true"
+                android:background="@drawable/round_button_diary"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/bar_button_text_color"/>
+
+        <Button
+                android:id="@+id/view_save_button"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:text="SHARE"
+                android:textStyle="bold"
+                android:background="@drawable/round_button_diary"
+                android:textColor="@color/bar_button_text_color"/>
+
+        <Button
+                android:id="@+id/view_modify_button"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_toStartOf="@id/view_save_button"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:text="MODIFY"
+                android:textStyle="bold"
+                android:background="@drawable/round_button_diary"
+                android:textColor="@color/bar_button_text_color"/>
+
+        <Button
+                android:id="@+id/view_delete_button"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_toStartOf="@id/view_modify_button"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:text="DELETE"
+                android:textStyle="bold"
+                android:background="@drawable/round_button_diary"
+                android:textColor="@color/bar_button_text_color"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/wrap_layout">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:background="@color/white">
+
+            <TextView
+                    android:id="@+id/view_date_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="10dp"
+                    android:textStyle="bold"/>
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp"
+                    android:text="날씨:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+            <ImageView
+                    android:id="@+id/view_weather_image"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/view_wrap_layout"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:background="@drawable/modify_canvas_border"
+                    android:layout_width="match_parent"
+                    android:id="@+id/view_canvas_image"
+                    android:scaleType="fitXY"
+                    android:layout_height="0dip"
+                    android:layout_weight="5"
+                    tools:ignore="NestedWeights"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:layout_height="0dp"
+                    android:id="@+id/view_content_text"
+                    android:overScrollMode="never"
+                    android:layout_width="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

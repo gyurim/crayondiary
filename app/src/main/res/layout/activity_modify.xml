@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/bar_background"
+            android:layout_weight="0">
+
+        <Button
+                android:id="@+id/write_back_button"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/round_button_diary"
+                android:text="Back"
+                android:textStyle="bold"
+                android:textColor="@color/bar_button_text_color"/>
+
+        <Button
+                android:id="@+id/write_done_button"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/round_button_diary"
+                android:text="SAVE"
+                android:textStyle="bold"
+                android:textColor="@color/bar_button_text_color"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center">
+
+        <!--
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:id="@+id/weather_text"
+                android:text="오늘의 날씨"
+                android:textSize="20dp"
+                android:layout_alignParentStart="true" />-->
+
+
+        <RadioGroup
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/weather_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+            <RadioButton
+                    android:id="@+id/sunny"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/weather_button_sunny"
+                    android:button="@android:color/transparent"/>
+
+            <RadioButton
+                    android:id="@+id/cloudy"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/weather_button_cloudy"
+                    android:button="@android:color/transparent"/>
+
+            <RadioButton
+                    android:id="@+id/rainy"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/weather_button_rainny"
+                    android:button="@android:color/transparent"/>
+
+            <RadioButton
+                    android:id="@+id/rainbow"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/weather_button_rainbow"
+                    android:button="@android:color/transparent"/>
+
+            <RadioButton
+                    android:id="@+id/snowy"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/weather_button_snowy"
+                    android:button="@android:color/transparent" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <org.androidtown.crayondiary.canvas.CanvasActivity
+            android:id="@+id/canvas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="5"
+            android:background="@drawable/modify_canvas_border"
+            android:padding="1dp" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="4">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+            <!-- scaleType, adjustviewBound 이미지버튼 이미지 크기 맞추기-->
+            <ImageButton
+                    android:id="@+id/draw_back_button"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/undo" />
+
+            <ImageButton
+                    android:id="@+id/brush_weight_button"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/brush_color_button"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/brush_weight" />
+
+            <ImageButton
+                    android:id="@+id/brush_color_button"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/brush_type_button"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/brush_color" />
+
+            <ImageButton
+                    android:id="@+id/brush_type_button"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/brush_type_button"/>
+        </RelativeLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#D9D9D6"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+        <EditText
+                android:id="@+id/modify_content_edit"
+                android:layout_width="match_parent"
+                android:layout_height="214dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:hint="일기를 적어주세요 (70자 이내)"
+                android:maxLength="70"/>
+    </LinearLayout>
+
+
+</LinearLayout>

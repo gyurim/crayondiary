@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/bar_title"
+            android:layout_height="50dp">
+        <TextView
+                android:id="@+id/title_C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C"
+                android:layout_centerVertical="true"
+                android:textColor="#FABBCB"
+                android:layout_marginStart="15dp"
+                android:textSize="30dp"
+                android:textStyle="bold"/>
+        <TextView
+                android:id="@+id/title_R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R"
+                android:textColor="#F5E1A4"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/title_C"/>
+
+        <TextView
+                android:id="@+id/title_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textColor="#B1C9E8"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/title_R"/>
+
+        <TextView
+                android:id="@+id/title_Y"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Y"
+                android:textColor="#BCE194"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/title_A"/>
+
+        <TextView
+                android:id="@+id/title_O"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O"
+                android:textColor="#D7B9E4"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/title_Y"/>
+
+        <TextView
+                android:id="@+id/title_N"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="N"
+                android:textColor="#C8B7AD"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/title_O"/>
+
+        <TextView
+                android:id="@+id/title_DIARY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/title_N"
+                android:text="DIARY"
+                android:textColor="@color/bar"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"/>
+
+
+
+        <Button
+                android:id="@+id/main_write_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="WRITE"
+                android:background="@drawable/round_button_main"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/bar_button_background"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+</LinearLayout>
