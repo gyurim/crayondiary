@@ -92,7 +92,7 @@ class DrawFileUtils {
 
         fun saveDrawFile(view: CanvasActivity, diary: Diary) {
             // saveDrawFile 함수 : 사용자가 그린 canvas 저장
-            val bitmap = view.mBitmap
+            var bitmap = view.mBitmap
             val path = saveImage(bitmap, diary.id)
             val oldFileId = diary.drawFileId
 
@@ -100,17 +100,20 @@ class DrawFileUtils {
             diary.drawFileId = path
             AppDatabase.instance.diaryDao().update(diary)
 
+            bitmap!!.recycle()
             Log.d("DrawFileUtils", "$diary")
         }
 
         fun saveScreenShot(view: View, diary: Diary){
-            val bitmap = getBitmapFromView(view, diary.id)
+            var bitmap = getBitmapFromView(view, diary.id)
             val path = getScreenShotPath(bitmap, diary.id)
             val oldFileId = diary.screenshotId
 
             File(getFilePath(oldFileId)).delete()
             diary.screenshotId = path
             AppDatabase.instance.diaryDao().update(diary)
+
+            bitmap!!.recycle()
             Log.d("DrawFileUtils", "$diary")
         }
 

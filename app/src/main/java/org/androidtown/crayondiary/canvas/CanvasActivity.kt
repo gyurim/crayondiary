@@ -17,9 +17,9 @@ class CanvasActivity : View {
     var mBitmap: Bitmap? = null
         set(value) {
             value?.let {
-                field = Bitmap.createScaledBitmap(it, width, height, true)
+                field = Bitmap.createScaledBitmap(it, width, height, true) //true: pixel형태 조정해 이미지 선명하게 보이도록
             } ?: run {
-                field = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+                field = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888) //한 pixel 4 bytes씩
             }
             mCanvas = Canvas(field)
             invalidate()
