@@ -67,7 +67,7 @@ class DrawFileUtils {
         private fun saveImage(bitmap: Bitmap?, id: Int): String {
             bitmap?.let {
                 val bytes = ByteArrayOutputStream()
-                val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 640, 960, true)
+                val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 640, 960, true) // 원본 크기의 bitmap을 축소 (따라서, 메모리는 줄어들지 않음) 
 
                 scaledBitmap.compress(Bitmap.CompressFormat.PNG, 90, bytes)
                 val drawDirectory = File(MainApplication.context.filesDir, "draw")
@@ -113,7 +113,7 @@ class DrawFileUtils {
             diary.screenshotId = path
             AppDatabase.instance.diaryDao().update(diary)
 
-            bitmap!!.recycle()
+            bitmap!!.recycle() // 위치가 틀렸음. activity가 종료되는 onDestroy()에서 선언되어야함
             Log.d("DrawFileUtils", "$diary")
         }
 

@@ -1,9 +1,13 @@
 package org.androidtown.crayondiary.canvas
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.ImageButton
+import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_modify.*
@@ -18,7 +22,7 @@ import petrov.kristiyan.colorpicker.ColorPicker
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ModifyActivity : AppCompatActivity() {
+class ModifyActivity : AppCompatActivity(), View.OnClickListener {
     var diary: Diary? = null
 
     private var weighttemp : Int = 0
@@ -32,6 +36,7 @@ class ModifyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modify)
         attachButtonEvents()
+        initButtonListeners()
 
         //From ViewActivity To ModifyActivity
          if(intent.hasExtra("idToModify")){
@@ -55,47 +60,16 @@ class ModifyActivity : AppCompatActivity() {
         diary = AppDatabase.instance.diaryDao().get(intentDiaryId)
         //diary가 null이 아니면 불러옴
         diary?.let {
-
             when(it.weather){
-                "sunny" -> {
-                    sunny.isChecked = true
-                    cloudy.isChecked = false
-                    rainy.isChecked = false
-                    snowy.isChecked = false
-                    rainbow.isChecked = false
-                }
+                "sunny" -> { sunny.isSelected = true }
 
-                "cloudy" -> {
-                    sunny.isChecked = false
-                    cloudy.isChecked = true
-                    rainy.isChecked = false
-                    snowy.isChecked = false
-                    rainbow.isChecked = false
-                }
+                "cloudy" -> { cloudy.isSelected = true }
 
-                "rainy" -> {
-                    sunny.isChecked = false
-                    cloudy.isChecked = false
-                    rainy.isChecked = true
-                    snowy.isChecked = false
-                    rainbow.isChecked = false
-                }
+                "rainy" -> { rainy.isSelected = true }
 
-                "snowy" -> {
-                    sunny.isChecked = false
-                    cloudy.isChecked = false
-                    rainy.isChecked = false
-                    snowy.isChecked = true
-                    rainbow.isChecked = false
-                }
+                "snowy" -> { snowy.isSelected = true }
 
-                "rainbow" -> {
-                    sunny.isChecked = false
-                    cloudy.isChecked = false
-                    rainy.isChecked = false
-                    snowy.isChecked = false
-                    rainbow.isChecked = true
-                }
+                "rainbow" -> { rainbow.isSelected = true }
             }
             weathertemp = it.weather
             modify_content_edit.setText(it.content)
@@ -109,6 +83,26 @@ class ModifyActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    private fun initButtonListeners(){
+        sunny.setOnClickListener(this)
+        rainbow.setOnClickListener(this)
+        rainy.setOnClickListener(this)
+        cloudy.setOnClickListener(this)
+        snowy.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View) {
+        val i = v.id
+        when(i){
+            R.id.sunny -> weatherButtonChange("sunny")
+            R.id.rainbow -> weatherButtonChange("rainbow")
+            R.id.rainy -> weatherButtonChange("rainy")
+            R.id.cloudy->weatherButtonChange("cloudy")
+            R.id.snowy -> weatherButtonChange("snowy")
+        }
+
     }
 
     private fun attachButtonEvents() {
@@ -138,54 +132,21 @@ class ModifyActivity : AppCompatActivity() {
 
         brush_weight_button.setOnClickListener {
             openWeightPicker() }
+    }
 
+    private fun weatherButtonChange(weatherId : String){
+        val pkg = packageName
+        val mId = resources.getIdentifier(weatherId, "id", pkg)
+        val mWeatherImageButton : RadioButton = findViewById(mId)
 
-        weather_group.setOnCheckedChangeListener{ _, checkedId ->
-            when (checkedId) {
-                R.id.sunny -> {
-                    weatherId = "sunny"
-                    sunny.isChecked = true
-                    cloudy.isChecked = false
-                    rainy.isChecked = false
-                    snowy.isChecked = false
-                    rainbow.isChecked=false
-                }
-                R.id.cloudy -> {
-                    weatherId = "cloudy"
-                    sunny.isChecked = false
-                    cloudy.isChecked = true
-                    rainy.isChecked = false
-                    snowy.isChecked = false
-                    rainbow.isChecked=false
-                }
-                R.id.snowy -> {
-                    weatherId = "snowy"
-                    sunny.isChecked = false
-                    cloudy.isChecked = false
-                    rainy.isChecked = false
-                    snowy.isChecked = true
-                    rainbow.isChecked=false
-                }
-                R.id.rainbow -> {
-                    weatherId = "rainbow"
-                    sunny.isChecked = false
-                    cloudy.isChecked = false
-                    rainy.isChecked = false
-                    snowy.isChecked = false
-                    rainbow.isChecked=true
-                }
-                R.id.rainy -> {
-                    weatherId = "rainy"
-                    sunny.isChecked = false
-                    cloudy.isChecked = false
-                    rainy.isChecked = true
-                    snowy.isChecked = false
-                    rainbow.isChecked=false
-                }
-            }
-            weathertemp = weatherId
+       if(!mWeatherImageButton.isSelected){
+            mWeatherImageButton.isSelected = true
+           weathertemp = weatherId
         }
-
+        else{
+            mWeatherImageButton.isSelected = false
+            weathertemp = ""
+        }
     }
 
     private fun openWeightPicker() {
@@ -303,6 +264,12 @@ class ModifyActivity : AppCompatActivity() {
             intent.putExtra("idToView", diary.id)
             startActivity(intent)
             finish()
+        }
+        else if(weatherId.isEmpty()){
+            showToast { "날씨를 선택해주세요 " }
+        }
+        else if (modify_content_edit.text.isEmpty()){
+            showToast { "일기를 작성해주세요 " }
         }
         else {
             showToast{"빈 값이 있습니다."}

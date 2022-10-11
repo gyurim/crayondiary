@@ -18,15 +18,15 @@ class ViewContentRecyclerViewAdapter(
     /*onCreateViewHolder : recyclerView의 행을 표시하는데 사용되는 layout xml을 가져옴*/
     /*LayoutInflater : xml객체를 view 객체로 만들어주기 위해 사용*/
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return MainRecyclerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_view_content, parent, false))
+        return ViewContentRecyclerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_view_content, parent, false))
     }
 
     /*RecyclerView의 행에 보여질 ImageView와 TextView 설정*/
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        bindDefaultView(holder as MainRecyclerViewHolder, position+1)
+        bindDefaultView(holder as ViewContentRecyclerViewHolder, position+1)
     }
 
-    private fun bindDefaultView(holder: MainRecyclerViewHolder, position: Int) {
+    private fun bindDefaultView(holder: ViewContentRecyclerViewHolder, position: Int) {
         if (position < items.size ) {
             holder.itemView.item_view_content_text.text = items[position]
         } else {

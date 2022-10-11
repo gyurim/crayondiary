@@ -29,6 +29,8 @@ class MainRecyclerViewAdapter(
 
     private fun bindDefaultView(holder: MainRecyclerViewHolder, position: Int){
         val item = items[position]
+
+        //holder.itemView.item_main_date.text 와 같은 것들을 mainRecyclerViewHolder에 변수 선언해놓는다면 매번 호출될때마다 findViewById가 사용되는 리소스를 줄일 수 있을 것임 -> 고치삼
         holder.itemView.item_main_date.text = item.date
         DrawFileUtils.setScreenshot(holder.itemView.item_main_screenshot_img, item.screenshotId)
 
