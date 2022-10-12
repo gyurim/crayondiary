@@ -1,4 +1,4 @@
-package org.androidtown.crayondiary.main
+package org.androidtown.crayondiary.presentation.ui.main
 
 import android.content.Context
 import android.content.Intent
