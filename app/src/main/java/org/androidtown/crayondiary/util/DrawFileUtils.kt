@@ -18,10 +18,8 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 import android.util.Log
-import android.widget.Toast
+import org.androidtown.crayondiary.MainApplication
 import org.androidtown.crayondiary.data.AppDatabase
-import org.androidtown.crayondiary.util.showToast
-import org.androidtown.crayondiary.view.ViewActivity
 
 
 class DrawFileUtils {

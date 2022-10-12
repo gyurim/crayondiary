@@ -1,4 +1,4 @@
-package org.androidtown.crayondiary.util
+package org.androidtown.crayondiary
 
 import android.app.Application
 

@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_main.view.*
 import kotlinx.android.synthetic.main.item_view_content.view.*
 import org.androidtown.crayondiary.R
-import org.androidtown.crayondiary.main.MainRecyclerViewHolder
-import org.androidtown.crayondiary.util.DrawFileUtils
 
 class ViewContentRecyclerViewAdapter(
     private val context : Context,

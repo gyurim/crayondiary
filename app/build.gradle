@@ -44,4 +44,13 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.3"
     kapt "androidx.room:room-compiler:2.4.3"
     implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
+    // splash api
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    // mvvm
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.activity:activity-ktx:1.5.1"
 }
